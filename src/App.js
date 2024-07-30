@@ -1,14 +1,13 @@
-import { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Component } from 'react'
+import './App.css'
 
 class App extends Component {
   constructor() {
-    super();
+    super()
 
     this.state = {
       monsters: [],
-    };
+    }
   }
 
   componentDidMount() {
@@ -17,31 +16,31 @@ class App extends Component {
       .then((users) =>
         this.setState(
           () => {
-            return { monsters: users };
+            return { monsters: users }
           },
           () => {
-            console.log(this.state);
+            console.log(this.state)
           }
         )
-      );
+      )
   }
 
   render() {
     return (
-      <div className='App'>
+      <div className="App">
         <input
-          className='search-box'
-          type='search'
-          placeholder='Search Monster'
+          className="search-box"
+          type="search"
+          placeholder="Search Monster"
           onChange={(event) => {
-            const keyword = event.target.value;
+            const keyword = event.target.value
             const filteredMonsters = this.state.monsters.filter((monster) => {
-              return monster.name.includes(keyword);
-            });
+              return monster.name.includes(keyword)
+            })
 
             this.setState(() => {
-              return { monsters: filteredMonsters };
-            });
+              return { monsters: filteredMonsters }
+            })
           }}
         />
         {this.state.monsters.map((monster, index) => {
@@ -49,11 +48,11 @@ class App extends Component {
             <div key={index}>
               <h1>{monster.name}</h1>
             </div>
-          );
+          )
         })}
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
